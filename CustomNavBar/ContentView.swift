@@ -7,11 +7,22 @@
 
 import SwiftUI
 
+
+struct DetailView: View {
+    var number: Int
+    
+    var body: some View {
+        Text("Number \(number)")
+    }
+    
+}
+
 struct ContentView: View {
+    
     var body: some View {
         NavigationStack {
             List(0..<100){ i in
-                Text("Row \(i)")
+                NavigationLink("Row \(i)", value: i)
             }
             .navigationTitle("Rows")
             .navigationBarTitleDisplayMode(.inline)
@@ -19,7 +30,11 @@ struct ContentView: View {
             .toolbarBackground(.pink, for: .navigationBar)
 //            .toolbarVisibility(.hidden, for: .navigationBar)
             .toolbarColorScheme(.dark)
+            .navigationDestination(for: Int.self) { i in
+                DetailView(number: i)
+            }
         }
+        
     }
 }
 
