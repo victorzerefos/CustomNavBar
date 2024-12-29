@@ -9,13 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List(0..<100){ i in
+                Text("Row \(i)")
+            }
+            .navigationTitle("Rows")
+            .navigationBarTitleDisplayMode(.inline)
+            .listStyle(.inset)
+            .toolbarBackground(.pink, for: .navigationBar)
+//            .toolbarVisibility(.hidden, for: .navigationBar)
+            .toolbarColorScheme(.dark)
         }
-        .padding()
     }
 }
 
